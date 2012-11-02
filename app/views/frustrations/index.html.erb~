@@ -24,4 +24,4 @@
 
 <br />
 
-<%= link_to 'New Frustration', new_frustration_path, :class => 'btn btn-success' %>
+<%= link_to 'New Frustration', new_frustration_path %>

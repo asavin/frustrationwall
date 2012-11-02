@@ -9941,7 +9941,7 @@ body {
     border-radius: 3px;
     border: 1px solid #DDD;
     padding: 10px;
-    min-height: 100px;
+    min-height: 140px;
     z-index: 1;
 }
 
@@ -10011,6 +10011,23 @@ body {
     top: 30px;
     color: white;
     font-size: 0.8em;
+}
+
+.big-love {
+    background: #444;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 3px;
+    opacity: 0.5;
+    text-align: center;
+    display: none;
+}
+
+.big-love img {
+    margin-top: 30px;
 }
 /* Inspired by http://css-tricks.com/snippets/css/corner-ribbon/ */
 

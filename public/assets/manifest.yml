@@ -1,5 +1,12 @@
 ---
+big_white_heart.png: big_white_heart.png
+heart_grey.png: heart_grey.png
+heart_grey_30.png: heart_grey_30.png
+little_heart.png: little_heart.png
 rails.png: rails.png
+text-stripes-light.png: text-stripes-light.png
+text-stripes.png: text-stripes.png
+text.png: text.png
 application.js: application.js
 application.css: application.css
 fontawesome-webfont.eot: fontawesome-webfont.eot

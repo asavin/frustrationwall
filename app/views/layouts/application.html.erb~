@@ -11,15 +11,9 @@
         <header>
             <div class="navbar">
               <div class="navbar-inner">
-                <a class="brand" href="#">Title</a>
-                <ul class="nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-                </ul>
+                <a class="brand" href="/">Home</a>
                 <ul class="nav pull-right">
                     <% if user_signed_in? %>
-                        <li>Logged in as <strong><%= current_user.email %></strong></li>
                         <li><%= link_to 'Profile', edit_user_registration_path %></li>
                         <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
                     <% else %>
@@ -37,7 +31,10 @@
                 </div>
                 <h1>Super awesome project</h1>
                     <p class="lead">You always wanted this</p>
-                    <a href='#' class='button-blue'>Add one</a>
+                    <div id="new_frustration_form">
+                        <%= render 'frustrations/form' %>
+                    </div>
+                    <a href='#' class='button-blue' id="toggle-frustration-form">Add one</a>
             </div>
             <hr />
             <div class="container">
@@ -51,5 +48,13 @@
             Some text for the footer
         </div>
     </div>
+    <script>
+        $('#toggle-frustration-form').click(function(){
+            
+            var txt = $("#new_frustration_form").is(':visible') ? 'Add one' : 'Maybe not';
+            $("#more-less-options-button").text(txt);
+            $('#new_frustration_form').slideToggle();
+        });
+    </script>
 </body>
 </html>

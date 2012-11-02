@@ -1,0 +1,26 @@
+<div class="frust-item">
+    <div class="frust-main-container">
+        <div class="frust-love-bubble">
+            <%= image_tag('little_heart.png', :class => 'love-bubble-icon') %>
+            <span class="love-bubble-count" id="love-bubble-count-<%= frustration.id %>"><%= frustration.love %></span>
+        </div>
+        <div class="frust-content">
+            <%= frustration.content %>
+        </div>
+        <div class="big-love" id="big-love-<%= frustration.id %>">
+            <%= image_tag('heart_grey.png') %>
+        </div>
+        <div class="frust-actions">
+            <a href="#" id="frust-love-action-<%= frustration.id %>"><span class="frust-love-action"></span></a>
+            <a href="#"><span class="frust-comment-action"></span></a>
+        </div>
+    </div>
+    <script>
+        $('#frust-love-action-<%= frustration.id %>').click(function(e){
+            e.preventDefault();
+            count = parseInt($('#love-bubble-count-<%= frustration.id %>').text(), 10) + 1
+            $('#love-bubble-count-<%= frustration.id %>').text(count)
+            $('#big-love-<%= frustration.id %>').fadeIn().delay(300).fadeOut();
+        });
+    </script>
+</div>

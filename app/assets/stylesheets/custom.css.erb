@@ -87,7 +87,7 @@
     border-radius: 3px;
     border: 1px solid #DDD;
     padding: 10px;
-    min-height: 100px;
+    min-height: 140px;
     z-index: 1;
 }
 
@@ -108,7 +108,7 @@
 .frust-actions {
     width: 100%;
     background: white;
-    height: 30px;
+    height: 35px;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -120,6 +120,19 @@
     height: 100%;
     display: inline-block;
     border-radius: 0px 0px 0px 3px;
+    background-image: url('<%= image_path('heart_grey_30.png') %>');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.frust-love-action:hover {
+    background: #ADADAD;
+    background-image: url('<%= image_path('heart_grey_30.png') %>');
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-transition: background 0.3s;
+   -moz-transition: background 0.3s;
+   -o-transition: background 0.3s;
 }
 
 .frust-comment-action {
@@ -128,6 +141,9 @@
     height: 100%;
     background: #9E9E9E;
     border-radius: 0px 0px 3px 0px;
+    background-image: url('<%= image_path('text-stripes-light.png') %>');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .love-bubble-icon {
@@ -141,4 +157,21 @@
     top: 30px;
     color: white;
     font-size: 0.8em;
+}
+
+.big-love {
+    background: #444;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 3px;
+    opacity: 0.5;
+    text-align: center;
+    display: none;
+}
+
+.big-love img {
+    margin-top: 30px;
 }

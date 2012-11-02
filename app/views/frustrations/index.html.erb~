@@ -1,4 +1,29 @@
-<h1>Listing frustrations</h1>
+<div class="frust-item">
+    <div class="frust-main-container">
+        <div class="frust-love-bubble">
+            <%= image_tag('little_heart.png', :class => 'love-bubble-icon') %>
+            <span class="love-bubble-count">123</span>
+        </div>
+        <div class="frust-content">
+            Some test text
+        </div>
+        <div class="big-love">
+            <%= image_tag('heart_grey.png') %>
+        </div>
+        <div class="frust-actions">
+            <a href="#"><span class="frust-love-action"></span></a>
+            <a href="#"><span class="frust-comment-action"></span></a>
+        </div>
+    </div>
+    <script>
+        $('.frust-love-action').click(function(e){
+            e.preventDefault();
+            count = parseInt($('.love-bubble-count').text(), 10) + 1
+            $('.love-bubble-count').text(count)
+            $('.big-love').fadeIn().delay(300).fadeOut();
+        });
+    </script>
+</div>
 
 <table class="table striped">
   <tr>
@@ -22,6 +47,3 @@
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Frustration', new_frustration_path %>

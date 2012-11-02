@@ -2,7 +2,7 @@
   <%= f.text_area :content, :maxlength => 400, :rows => 7, :placeholder => 'What happened today?' %>
   
   <div class="actions">
-    <%= f.button :submit, 'Share Frustration', :disable_with => 'Saving...', :class => 'btn btn-danger' %>
+    <%= f.button :submit, :disable_with => 'Saving...', :class => 'btn btn-danger' %>
   </div>
 <% end %>
 

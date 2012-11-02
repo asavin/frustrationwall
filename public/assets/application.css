@@ -2626,7 +2626,7 @@ table th[class*="span"],
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("../img/glyphicons-halflings.png");
+  background-image: url(""/assets/twitter/bootstrap/glyphicons-halflings.png"");
   background-position: 14px 14px;
   background-repeat: no-repeat;
   margin-top: 1px;
@@ -2645,7 +2645,7 @@ table th[class*="span"],
 .dropdown-menu > .active > a > [class*=" icon-"],
 .dropdown-submenu:hover > a > [class^="icon-"],
 .dropdown-submenu:hover > a > [class*=" icon-"] {
-  background-image: url("../img/glyphicons-halflings-white.png");
+  background-image: url(""/assets/twitter/bootstrap/glyphicons-halflings-white.png"");
 }
 .icon-glass {
   background-position: 0      0;
@@ -9875,16 +9875,16 @@ body {
   }
   
   #footer {
-    margin-top: 20px;
+    margin-top: 60px;
     background-color: #f5f5f5;
     color: #333;
     background-color: #666;
-    text-shadow: 0px 1px 0px rgba(255,255,255,.5); /* 50% white from bottom */
+    text-shadow: 0px 1px 0px rgba(255,255,255,.4); /* 40% white from bottom */
     -moz-box-shadow:    inset 0 2px 6px #000000;
    -webkit-box-shadow: inset 0 2px 6px #000000;
    box-shadow:         inset 0 2px 6px #000000;
    text-align: center;
-   padding-top: 10px;
+   padding-top: 15px;
   }
 
   /* Lastly, apply responsive CSS fixes as necessary */
@@ -9903,14 +9903,123 @@ body {
     margin: 60px 0;
     text-align: center;
 }
+
+#new_frustration_form {
+    background: #AAA;
+    margin-left: -20px;
+    margin-right: -20px;
+    box-shadow: inset 0px 2px 8px 0px rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+#new_frustration_form input[type="submit"] {
+    margin-bottom: 20px;
+}
+
+#frustration_content {
+    width: 300px;
+    margin: 20px 0;
+}
+
+.characters_left {
+    margin-left: 10px;
+    color: #fff;
+    font-size: 1em;
+}
+
+/* Frustration item UI styles */
+
+.frust-item {
+    width: 400px;
+    height: auto;
+    margin: 30px;
+    position: relative;
+}
+
+.frust-main-container {
+    background: white;
+    border-radius: 3px;
+    border: 1px solid #DDD;
+    padding: 10px;
+    min-height: 100px;
+    z-index: 1;
+}
+
+.frust-love-bubble {
+    background: #9E9E9E;
+    border: 1px solid #AAA;
+    height: 50px;
+    width: 50px;
+    border-radius: 3px;
+    position: absolute;
+    top: 15px;
+    right: -51px;
+    -webkit-border-radius: 0px 3px 3px 0px;
+    border-radius: 0px 3px 3px 0px;
+    text-align: center;
+}
+
+.frust-actions {
+    width: 100%;
+    background: white;
+    height: 35px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.frust-love-action {
+    width: 49%;
+    background: #9E9E9E;
+    height: 100%;
+    display: inline-block;
+    border-radius: 0px 0px 0px 3px;
+    background-image: url('/assets/heart_grey_30.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.frust-love-action:hover {
+    background: #ADADAD;
+    background-image: url('/assets/heart_grey_30.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-transition: background 0.3s;
+   -moz-transition: background 0.3s;
+   -o-transition: background 0.3s;
+}
+
+.frust-comment-action {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    background: #9E9E9E;
+    border-radius: 0px 0px 3px 0px;
+    background-image: url('/assets/text-stripes-light.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.love-bubble-icon {
+    position: absolute;
+    left: 14px;
+    top: 5px;
+}
+
+.love-bubble-count {
+    position: absolute;
+    top: 30px;
+    color: white;
+    font-size: 0.8em;
+}
 /* Inspired by http://css-tricks.com/snippets/css/corner-ribbon/ */
 
 
 .ribbon-wrapper {
   margin: 50px auto;
   width: auto;
-  height: 170px;
-  padding: 20px;
+  height: auto;
+  padding: 20px 20px 40px 20px;
   background: white;
   border-radius: 10px;
   -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);

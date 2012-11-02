@@ -3,7 +3,7 @@
 .ribbon-wrapper {
   margin: 50px auto;
   width: auto;
-  height: 170px;
+  height: auto;
   padding: 20px;
   background: white;
   border-radius: 10px;

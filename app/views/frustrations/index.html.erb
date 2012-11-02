@@ -1,0 +1,27 @@
+<h1>Listing frustrations</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @frustrations.each do |frustration| %>
+  <tr>
+    <td><%= frustration.title %></td>
+    <td><%= frustration.content %></td>
+    <td><%= frustration.user_id %></td>
+    <td><%= link_to 'Show', frustration %></td>
+    <td><%= link_to 'Edit', edit_frustration_path(frustration) %></td>
+    <td><%= link_to 'Destroy', frustration, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Frustration', new_frustration_path %>

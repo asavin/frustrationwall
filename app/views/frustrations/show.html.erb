@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @frustration.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @frustration.content %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @frustration.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_frustration_path(@frustration) %> |
+<%= link_to 'Back', frustrations_path %>

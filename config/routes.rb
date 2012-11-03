@@ -3,6 +3,7 @@ Frustrationwall::Application.routes.draw do
 
   resources :frustrations
   match "/frustrations/add_love/:id" => "frustrations#add_love", :as => :add_love
+  match "/my" => "users#frustrations", :as => :user_frustrations
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

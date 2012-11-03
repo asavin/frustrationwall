@@ -2,7 +2,7 @@ Frustrationwall::Application.routes.draw do
   devise_for :users
 
   resources :frustrations
-  match "/frustrations/add_love/:id" => "frustrations#add_love"
+  match "/frustrations/add_love/:id" => "frustrations#add_love", :as => :add_love
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

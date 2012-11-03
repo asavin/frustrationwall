@@ -3,7 +3,8 @@
   border: 1px solid #e5e5e5;
   text-align: center;
   padding: 1em;
-  cursor: default; }
+  cursor: default;
+  opacity: 0; }
   
   .pagination a, .pagination span {
     padding: 0.2em 0.3em; }

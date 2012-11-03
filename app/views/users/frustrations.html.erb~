@@ -1,0 +1,2 @@
+<h3>Don't worry. It will be gone soon.</h3>
+<%= render @frustrations %>

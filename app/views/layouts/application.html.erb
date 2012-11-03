@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Frustration Wall</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+
+  
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+    <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
     <!-- Displaying notifications if any -->
     <div id="overlay_container">
     <% flash.each do |key, value| %>
@@ -16,6 +26,14 @@
             }, 4000);
         <% end %>
     <% end %>
+    </div>
+    <div id="overlay-destruction-section">
+        <div class="destruction-content">
+            <h1>Warning</h1>
+            <p>This will effectively remove all frustrations from everyone on this server</p>
+            <button class="btn btn-danger">Yes please</button>
+            <button class="btn btn-success">No, wait</button>
+        </div>
     </div>
     <div id="wrap">
         <header>
@@ -43,8 +61,20 @@
                 <% end %>
                 <ul class="nav pull-right">
                     <% if user_signed_in? %>
-                        <li><%= link_to 'Profile', edit_user_registration_path %></li>
-                        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle"
+                               data-toggle="dropdown"
+                               href="#">
+                                Your stuff
+                                <b class="caret"></b>
+                              </a>
+                            <ul class="dropdown-menu">
+                              <li><%= link_to 'Frustrations', user_frustrations_path %></li>
+                              <li><%= link_to 'Profile', edit_user_registration_path %></li>
+                              <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+                            </ul>
+                          </li>
+                        
                     <% else %>
                         <li><%= link_to "Register", new_user_registration_path %></li>
                         <li><%= link_to "Login", new_user_session_path %></li>
@@ -59,12 +89,28 @@
             </div>
         </a>
         <div class="container">
-            <div class="jumbotron ribbon-wrapper">
+            <% if Frustration.count < 100 %>
+            <div class="jumbotron ribbon-wrapper sky-<%= Frustration.count/10 %>">
+            <% else %>
+                <div class="jumbotron ribbon-wrapper sky-10">
+            <% end %>
                 <div class="ribbon-wrapper-green"><div class="ribbon-green">BETA</div>
                     
                 </div>
+                <% if Frustration.count < 100 %>
+                    <div class="cloud-left cloud-<%= Frustration.count/10 %>">
+                    </div>
+                    <div class="cloud-right cloud-<%= Frustration.count/10 %>">
+                    </div>
+                <% else %>
+                    <div class="cloud-left cloud-10">
+                    </div>
+                    <div class="cloud-right cloud-10">
+                    </div>
+                <% end %>
+                
                 <h1 class="main-title">Frustration Wall</h1>
-                    <p class="lead" id="title-slogan">You always wanted this</p>
+                    <p class="lead" id="title-slogan">When something doesn't work</p>
                     <div id="new_frustration_form">
                         <%= render 'frustrations/form' %>
                     </div>
@@ -83,8 +129,15 @@
         </div>
     </div>
     <script>
+        $('.dropdown-toggle').dropdown()
         $('#toggle-frustration-form').click(function(){
-            
+            if ($("#new_frustration_form").is(':visible') == true) {
+                $('.cloud-left').fadeIn('fast');
+                $('.cloud-right').fadeIn('fast');
+            } else {
+                $('.cloud-left').fadeOut('fast');
+                $('.cloud-right').fadeOut('fast');
+            }
             var txt = $("#new_frustration_form").is(':visible') ? 'Add one' : 'Maybe not';
             $("#toggle-frustration-form").text(txt);
             $('#new_frustration_form').slideToggle();
@@ -96,9 +149,22 @@
             <% end %>
             
             $('#big-red-button').click(function(){
-                $('body').addClass('shaky');
+                $('#wrap').addClass('shaky');
+                $('#overlay-destruction-section').fadeIn('fast');
             });
         <% end %>
+        
+        // Google Analytics
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-36075943-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
     </script>
 </body>
 </html>

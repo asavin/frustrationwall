@@ -46,17 +46,20 @@
 /* End of sticky footer styles */
 
 .main-title {
-    font-family: 'CabinSketchRegular';
+    font-family: 'LondrinaSolidRegular';
+    letter-spacing: 2px;
 }
 
 #title-slogan {
-    font-family: 'CabinSketchRegular';
+    font-family: 'LondrinaSolidRegular';
 }
 
 .jumbotron {
     margin: 60px 0;
     text-align: center;
 }
+
+
 
 #new_frustration_form {
     background: #AAA;
@@ -265,7 +268,7 @@
 #big-red-button {
     margin-left: 40%;
     display: none;
-    position: absolute;
+    position: relative;
 }
 
 @-webkit-keyframes spaceboots {
@@ -280,6 +283,137 @@
 	80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); }
 	90% { -webkit-transform: translate(2px, 2px) rotate(0deg); }
 	100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.shaky {
+	/*display:inline-block*/
+	-webkit-animation-name: spaceboots;
+	-webkit-animation-duration: 0.8s;
+	-webkit-transform-origin:50% 50%;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+
+#overlay-destruction-section {
+    position: fixed;
+    z-index: 100;
+    background: #444;
+    width: 50%;
+    height: 50%;
+    border: 15px solid rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    left: 20%;
+    top: 15%;
+    background-clip: content-box;
+    display: none;
+}
+
+.destruction-content {
+    padding: 50px;
+    color: white;
+    font-family: 'CabinSketchRegular';
+    overflow: hidden;
+}
+
+/* Cloudy with a chance of sleep */
+.sky-1 {
+    background-color: #66CCFF;
+}
+
+.sky-2 {
+    background-color: #5BB5EE;
+}
+
+.sky-3 {
+    background-color: #4F9FDD;
+}
+
+.sky-4 {
+    background-color: #4488CC;
+}
+
+.sky-5 {
+    background-color: #3971BB;
+}
+
+.sky-6 {
+    background-color: #2D5BAA;
+}
+
+.sky-7 {
+    background-color: #224499;
+}
+
+.sky-8 {
+    background-color: #172D88;
+}
+
+.sky-9 {
+    background-color: #0B1777;
+}
+
+.sky-10 {
+    background-color: #000066;
+}
+
+.cloud-left {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    background-repeat: no-repeat;
+    width: 245px;
+    height: 190px;
+    z-index: -1;
+}
+
+.cloud-right {
+    position: absolute;
+    right: 20px;
+    top: 0px;
+    background-repeat: no-repeat;
+    width: 245px;
+    height: 190px;
+    z-index: -1;
+}
+
+.cloud-1 {
+    background-image: url('<%= image_path('cloud_1.png') %>');
+}
+
+.cloud-2 {
+    background-image: url('<%= image_path('cloud_2.png') %>');
+}
+
+.cloud-3 {
+    background-image: url('<%= image_path('cloud_3.png') %>');
+}
+
+.cloud-4 {
+    background-image: url('<%= image_path('cloud_4.png') %>');
+}
+
+.cloud-5 {
+    background-image: url('<%= image_path('cloud_5.png') %>');
+}
+
+.cloud-6 {
+    background-image: url('<%= image_path('cloud_6.png') %>');
+}
+
+.cloud-7 {
+    background-image: url('<%= image_path('cloud_7.png') %>');
+}
+
+.cloud-8 {
+    background-image: url('<%= image_path('cloud_8.png') %>');
+}
+
+.cloud-9 {
+    background-image: url('<%= image_path('cloud_9.png') %>');
+}
+
+.cloud-10 {
+    background-image: url('<%= image_path('cloud_10.png') %>');
 }
 
 /* Responsive design */
@@ -301,5 +435,32 @@
     .frust-item {
         width: 90%;
         margin: 30px 0 30px -30px;
+    }
+    
+    .cloud-left {
+        position: absolute;
+        left: 50px;
+        top: 20px;
+        height: 100px;
+        background-size: 50%;
+    }
+    
+    .cloud-right {
+        position: absolute;
+        right: 50px;
+        top: 20px;
+        height: 100px;
+        background-size: 50%;
+        background-position: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .cloud-left {
+        display: none;
+    }
+    
+    .cloud-right {
+        display: none;
     }
 }

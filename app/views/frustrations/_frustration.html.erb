@@ -1,6 +1,6 @@
 <div class="frust-item">
     <div class="frust-main-container">
-        <div class="frust-love-bubble">
+        <div class="frust-love-bubble" id="frust-love-bubble-<%= frustration.id %>">
             <%= image_tag('little_heart.png', :class => 'love-bubble-icon') %>
             <span class="love-bubble-count" id="love-bubble-count-<%= frustration.id %>"><%= frustration.love %></span>
         </div>
@@ -18,9 +18,21 @@
     <script>
         $('#frust-love-action-<%= frustration.id %>').click(function(e){
             e.preventDefault();
+            $('#frust-love-bubble-<%= frustration.id %>').show();
             count = parseInt($('#love-bubble-count-<%= frustration.id %>').text(), 10) + 1
             $('#love-bubble-count-<%= frustration.id %>').text(count)
             $('#big-love-<%= frustration.id %>').fadeIn().delay(300).fadeOut();
+            $.ajax({
+                url: "<%= add_love_path(:id => frustration.id) %>",
+                
+            }).done(function(){
+            
+            });
         });
+        <% if frustration.love > 0 %>
+            $(document).ready(function(){
+                $('#frust-love-bubble-<%= frustration.id %>').fadeIn('slow');
+            });
+        <% end %>
     </script>
 </div>

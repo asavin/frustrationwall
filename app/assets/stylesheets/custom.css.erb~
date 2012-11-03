@@ -169,6 +169,7 @@
     border-radius: 3px;
     opacity: 0.5;
     text-align: center;
+    display: none;
 }
 
 .big-love img {

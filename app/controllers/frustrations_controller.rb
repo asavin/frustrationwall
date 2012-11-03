@@ -41,16 +41,30 @@ class FrustrationsController < ApplicationController
   # POST /frustrations
   # POST /frustrations.json
   def create
-    @frustration = Frustration.new(params[:frustration])
+    unless current_user.nil?
+        @frustration = current_user.frustrations.build(params[:frustration])
+    else
+        @frustration = Frustration.new(params[:frustration])
+    end
+    
 
     respond_to do |format|
       if @frustration.save
-        format.html { redirect_to @frustration, notice: 'Frustration was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Frustration was successfully shared' }
         format.json { render json: @frustration, status: :created, location: @frustration }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to root_path, notice: 'Something went wrong' }
         format.json { render json: @frustration.errors, status: :unprocessable_entity }
       end
+    end
+  end
+  
+  def add_love
+    @frustration = Frustration.find(params[:id])
+    @frustration.love +=1
+    @frustration.save
+    respond_to do |format|
+        format.html { render :nothing => true }
     end
   end
 

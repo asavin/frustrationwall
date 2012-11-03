@@ -19,6 +19,7 @@ group :assets do
   gem 'therubyracer', :platform => :ruby, :group => :development
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'less-rails'
   gem 'twitter-bootstrap-rails'
 end
 
@@ -35,6 +36,7 @@ gem 'koala'
 gem 'exception_notification'
 
 gem 'will_paginate'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

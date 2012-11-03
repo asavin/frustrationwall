@@ -11940,7 +11940,20 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 }).call(this);
 (function() {
 
-
+  jQuery(function() {
+    if ($('.pagination').length) {
+      $(window).scroll(function() {
+        var url;
+        url = $('.pagination .next_page').attr('href');
+        if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+          $('.pagination').hide();
+          $('.bubblingG').css("display", "inline-block");
+          return $.getScript(url);
+        }
+      });
+    }
+    return $(window).scroll();
+  });
 
 }).call(this);
 // This is a manifest file that'll be compiled into application.js, which will include all the files

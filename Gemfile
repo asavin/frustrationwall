@@ -20,7 +20,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'less-rails'
-  gem 'twitter-bootstrap-rails'
+  gem 'twitter-bootstrap-rails', '2.1.3'
 end
 
 gem 'jquery-rails'
@@ -37,6 +37,8 @@ gem 'exception_notification'
 
 gem 'will_paginate'
 
+gem 'exception_notification'
+gem 'newrelic_rpm'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

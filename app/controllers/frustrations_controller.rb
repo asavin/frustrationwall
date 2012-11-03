@@ -75,6 +75,7 @@ class FrustrationsController < ApplicationController
     
     respond_to do |format|
         format.html { render :nothing => true }
+        format.json { render json: current_user.level }
     end
   end
 

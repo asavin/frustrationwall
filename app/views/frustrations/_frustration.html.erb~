@@ -6,7 +6,7 @@
         </div>
         <div class="frust-content">
             <span><%= frustration.content %></span>
-            <div class="time-ago"><%= link_to time_ago_in_words(frustration.created_at) + 'ago', frustration %></div>
+            <div class="time-ago"><%= link_to time_ago_in_words(frustration.created_at) + ' ago', frustration %></div>
         </div>
         <div class="big-love" id="big-love-<%= frustration.id %>">
             <%= image_tag('heart_grey.png') %>
@@ -23,12 +23,22 @@
             count = parseInt($('#love-bubble-count-<%= frustration.id %>').text(), 10) + 1
             $('#love-bubble-count-<%= frustration.id %>').text(count)
             $('#big-love-<%= frustration.id %>').fadeIn().delay(300).fadeOut();
-            $.ajax({
-                url: "<%= add_love_path(:id => frustration.id) %>",
-                
-            }).done(function(){
+            $.getJSON("<%= add_love_path(:id => frustration.id) %>", {}, 
+                function(data) {
+                    // let's update the progress bar based on the server response
+                    if(data < 34) {
+                        percents = data + '%';
+                        $('#green-progress-bar-part').css('width', percents);
+                    } else if(data < 67) {
+                        percents = data - 33 + '%';
+                        $('#yellow-progress-bar-part').css('width', percents);
+                    } else if(data < 101) {
+                        percents = data - 66 + '%';
+                        $('#red-progress-bar-part').css('width', percents);
+                    }
+                }
             
-            });
+            );
         });
         <% if frustration.love > 0 %>
             $(document).ready(function(){

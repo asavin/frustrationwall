@@ -45,6 +45,14 @@
   
 /* End of sticky footer styles */
 
+.main-title {
+    font-family: 'CabinSketchRegular';
+}
+
+#title-slogan {
+    font-family: 'CabinSketchRegular';
+}
+
 .jumbotron {
     margin: 60px 0;
     text-align: center;
@@ -248,6 +256,16 @@
     top: 10px;
     left: 150px;
     border-radius: 3px;
+}
+
+#green-progress-bar-part {
+    border-radius: 3px 0 0 3px;
+}
+
+#big-red-button {
+    margin-left: 40%;
+    display: none;
+    position: absolute;
 }
 
 /* Responsive design */

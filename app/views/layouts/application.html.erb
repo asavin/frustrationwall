@@ -26,16 +26,20 @@
                     <div class="progress" id="super-progress-bar">
                       <% if current_user.level < 34 %>
                         <div class="bar bar-success" id="green-progress-bar-part" style="width: <%= current_user.level %>%;"></div>
+                        <div class="bar bar-warning" id="yellow-progress-bar-part" style="width: 0%;"></div>
+                        <div class="bar bar-danger" id="red-progress-bar-part" style="width: 0%;"></div>
                       <% elsif current_user.level < 64 %>
                             <div class="bar bar-success" id="green-progress-bar-part" style="width: 33%;"></div>
-                            <div class="bar bar-warning" style="width: <%= current_user.level - 33 %>%;"></div>
+                            <div class="bar bar-warning" id="yellow-progress-bar-part" style="width: <%= current_user.level - 33 %>%;"></div>
+                            <div class="bar bar-danger" id="red-progress-bar-part" style="width: 0%;"></div>
                       <% else %>
                         <div class="bar bar-success" id="green-progress-bar-part" style="width: 33%;"></div>
-                            <div class="bar bar-warning" style="width: 33%;"></div>
-                            <div class="bar bar-danger" style="width: <%= current_user.level - 66 %>%;"></div>
+                            <div class="bar bar-warning" id="yellow-progress-bar-part" style="width: 33%;"></div>
+                            <div class="bar bar-danger" id="red-progress-bar-part" style="width: <%= current_user.level - 66 %>%;"></div>
                       <% end %> 
                       
                     </div>
+                    <button class="btn btn-danger" id="big-red-button">Big Red Button</button>
                 <% end %>
                 <ul class="nav pull-right">
                     <% if user_signed_in? %>
@@ -59,8 +63,8 @@
                 <div class="ribbon-wrapper-green"><div class="ribbon-green">BETA</div>
                     
                 </div>
-                <h1>Super awesome project</h1>
-                    <p class="lead">You always wanted this</p>
+                <h1 class="main-title">Frustration Wall</h1>
+                    <p class="lead" id="title-slogan">You always wanted this</p>
                     <div id="new_frustration_form">
                         <%= render 'frustrations/form' %>
                     </div>
@@ -85,6 +89,16 @@
             $("#toggle-frustration-form").text(txt);
             $('#new_frustration_form').slideToggle();
         });
+        
+        <% if user_signed_in? %>
+            <% if current_user.level >= 100 %>
+                $('#big-red-button').show();
+            <% end %>
+            
+            $('#big-red-button').click(function(){
+                $('body').addClass('shaky');
+            });
+        <% end %>
     </script>
 </body>
 </html>

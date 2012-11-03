@@ -1,0 +1,8 @@
+$('.bubblingG').hide();
+$('.frustrations-list').append('<%= j render(@frustrations) %>');
+<% if @frustrations.next_page %>
+    $('pagination').detach().appendTo('.frustrations-list');
+    $('.pagination').replaceWith('<%= j will_paginate(@frustrations) %>');
+<% else %>
+    $('.pagination').remove();
+<% end %>

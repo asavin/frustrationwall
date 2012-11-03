@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   before_filter :initialize_public_variables
   
   def initialize_public_variables
-    @frustration = Frustration.new
+  
   end
 end

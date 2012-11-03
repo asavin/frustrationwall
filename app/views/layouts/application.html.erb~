@@ -7,11 +7,38 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+    <!-- Displaying notifications if any -->
+    <div id="overlay_container">
+    <% flash.each do |key, value| %>
+        <%= content_tag :div, value, :class => ["overlay_content"] %>
+        <%= content_tag :script, :type => "text/javascript" do -%>
+            setTimeout(function(){ $(".overlay_content").fadeOut("slow")
+            }, 4000);
+        <% end %>
+    <% end %>
+    </div>
     <div id="wrap">
         <header>
             <div class="navbar">
               <div class="navbar-inner">
                 <a class="brand" href="/">Home</a>
+                <% unless current_user.nil? %>
+                    <div class="progress" id="super-progress-bar">
+                      <% if current_user.level < 34 %>
+                        <div class="bar bar-success" id="green-progress-bar-part" style="width: <%= current_user.level %>%;"></div>
+                      <% elsif current_user.level < 64 %>
+                            <div class="bar bar-success" id="green-progress-bar-part" style="width: 33%;"></div>
+                            <div class="bar bar-warning" style="width: <%= current_user.level - 33 %>%;"></div>
+                      <% else %>
+                        <div class="bar bar-success" id="green-progress-bar-part" style="width: 33%;"></div>
+                            <div class="bar bar-warning" style="width: 33%;"></div>
+                            <div class="bar bar-danger" style="width: <%= current_user.level - 66 %>%;"></div>
+                      <% end %> 
+                      
+                      <div class="bar bar-warning" style="width: 0%;"></div>
+                      <div class="bar bar-danger" style="width: 0%;"></div>
+                    </div>
+                <% end %>
                 <ul class="nav pull-right">
                     <% if user_signed_in? %>
                         <li><%= link_to 'Profile', edit_user_registration_path %></li>
@@ -24,9 +51,11 @@
               </div>
             </div>
         </header>
-        <div id="scroll-up">
-            Go Up
-        </div>
+        <a href="#">
+            <div id="scroll-up">
+                Go Up
+            </div>
+        </a>
         <div class="container">
             <div class="jumbotron ribbon-wrapper">
                 <div class="ribbon-wrapper-green"><div class="ribbon-green">BETA</div>
@@ -48,7 +77,7 @@
     </div>
     <div id="footer">
         <div class="container">
-            Some text for the footer
+            Boogie Software, bringing love to the world. From Finland.
         </div>
     </div>
     <script>

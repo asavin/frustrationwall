@@ -2,12 +2,13 @@ class FrustrationsController < ApplicationController
   # GET /frustrations
   # GET /frustrations.json
   def index
-    @frustrations = Frustration.all
-    @frustration = Frustration.new
+    @frustrations = Frustration.page(params[:page]).per_page(10)
+    
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @frustrations }
+      format.js
     end
   end
 
@@ -63,6 +64,15 @@ class FrustrationsController < ApplicationController
     @frustration = Frustration.find(params[:id])
     @frustration.love +=1
     @frustration.save
+    
+    # level up the user
+    unless current_user.nil?
+        unless current_user.level >= 100
+            current_user.level += 1
+            current_user.save
+        end
+    end
+    
     respond_to do |format|
         format.html { render :nothing => true }
     end

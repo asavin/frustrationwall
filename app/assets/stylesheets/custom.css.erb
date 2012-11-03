@@ -107,6 +107,11 @@
     display: none;
 }
 
+.frust-content {
+    text-align: left;
+    padding-bottom: 35px;
+}
+
 .frust-actions {
     width: 100%;
     background: white;
@@ -198,6 +203,55 @@
     display: block;
     z-index: 100;
     display: none;
+}
+
+.time-ago a {
+    position: absolute;
+    bottom: 40px;
+    right: 20px;
+    color: #AAA;
+    font-size: 0.8em;
+}
+
+/* Style for overlay notification */
+.overlay_content {
+	position: absolute;
+	width: 500px;
+	height: 30px;
+	padding: 20px 0 0 0;
+	left: -250px;
+	background-color: #333;
+	z-index:1002;
+	overflow: hidden;
+	color: white;
+	text-align: center;
+	font-size: 1.2em;
+	opacity: 0.8;
+    
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    
+}
+
+#overlay_container {
+	width: 500px;
+	position: absolute;
+	left: 50%;
+	top: -10px;
+}
+
+#super-progress-bar {
+    display: inline;
+    position: absolute;
+    width: 20%;
+    top: 10px;
+    left: 150px;
+    border-radius: 3px;
+}
+
+#green-progress-bar-part {
+    border-radius: 3px 0 0 3px;
 }
 
 /* Responsive design */

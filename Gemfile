@@ -34,6 +34,8 @@ gem 'simple_form'
 gem 'koala'
 gem 'exception_notification'
 
+gem 'will_paginate'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -1,7 +1,7 @@
 <div class="frustrations-list">
-    <% @frustrations.each do |frustration| %>
-        <%= render frustration %>
-    <% end %>
+        <%= render @frustrations %>
+    
+    <%= will_paginate @frustrations %>
 </div>
 
 <script>
@@ -9,6 +9,9 @@
         console.log($(document).scrollTop());
         if ($(document).scrollTop() > 200) {
             $('#scroll-up').fadeIn();
+        }
+        else {
+            $('#scroll-up').fadeOut();
         }
     });
 </script>

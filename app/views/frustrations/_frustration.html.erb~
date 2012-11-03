@@ -5,7 +5,8 @@
             <span class="love-bubble-count" id="love-bubble-count-<%= frustration.id %>"><%= frustration.love %></span>
         </div>
         <div class="frust-content">
-            <%= frustration.content %>
+            <span><%= frustration.content %></span>
+            <div class="time-ago"><%= link_to time_ago_in_words(frustration.created_at) + 'ago', frustration %></div>
         </div>
         <div class="big-love" id="big-love-<%= frustration.id %>">
             <%= image_tag('heart_grey.png') %>
@@ -23,7 +24,7 @@
             $('#love-bubble-count-<%= frustration.id %>').text(count)
             $('#big-love-<%= frustration.id %>').fadeIn().delay(300).fadeOut();
             $.ajax({
-                url: "<%= frustrations_add_love_path(:id => frustration.id) %>",
+                url: "<%= add_love_path(:id => frustration.id) %>",
                 
             }).done(function(){
             

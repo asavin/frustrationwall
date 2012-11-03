@@ -9,5 +9,6 @@ jQuery ->
                   if url &&  $(window).scrollTop() > $(document).height() - $(window).height() - 50
                           $('.pagination').hide();
                           $('.bubblingG').css("display", "inline-block");
+                          sleep(5);
                           $.getScript(url)
     $(window).scroll()

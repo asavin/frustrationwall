@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Frustration Wall</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -24,6 +24,9 @@
               </div>
             </div>
         </header>
+        <div id="scroll-up">
+            Go Up
+        </div>
         <div class="container">
             <div class="jumbotron ribbon-wrapper">
                 <div class="ribbon-wrapper-green"><div class="ribbon-green">BETA</div>
@@ -52,7 +55,7 @@
         $('#toggle-frustration-form').click(function(){
             
             var txt = $("#new_frustration_form").is(':visible') ? 'Add one' : 'Maybe not';
-            $("#more-less-options-button").text(txt);
+            $("#toggle-frustration-form").text(txt);
             $('#new_frustration_form').slideToggle();
         });
     </script>

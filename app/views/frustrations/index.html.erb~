@@ -1,49 +1,14 @@
-<div class="frust-item">
-    <div class="frust-main-container">
-        <div class="frust-love-bubble">
-            <%= image_tag('little_heart.png', :class => 'love-bubble-icon') %>
-            <span class="love-bubble-count">123</span>
-        </div>
-        <div class="frust-content">
-            Some test text
-        </div>
-        <div class="big-love">
-            <%= image_tag('heart_grey.png') %>
-        </div>
-        <div class="frust-actions">
-            <a href="#"><span class="frust-love-action"></span></a>
-            <a href="#"><span class="frust-comment-action"></span></a>
-        </div>
-    </div>
-    <script>
-        $('.frust-love-action').click(function(e){
-            e.preventDefault();
-            count = parseInt($('.love-bubble-count').text(), 10) + 1
-            $('.love-bubble-count').text(count)
-            $('.big-love').fadeIn().delay(300).fadeOut();
-        });
-    </script>
+<div class="frustrations-list">
+    <% @frustrations.each do |frustration| %>
+        <%= render frustration %>
+    <% end %>
 </div>
 
-<table class="table striped">
-  <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @frustrations.each do |frustration| %>
-  <tr>
-    <td><%= frustration.title %></td>
-    <td><%= frustration.content %></td>
-    <td><%= frustration.user_id %></td>
-    <td><%= link_to 'Show', frustration, :class => 'btn' %></td>
-    <td><%= link_to 'Edit', edit_frustration_path(frustration), :class => 'btn' %></td>
-    <td><%= link_to 'Destroy', frustration, confirm: 'Are you sure?', method: :delete, :class => 'btn btn-warning' %></td>
-  </tr>
-<% end %>
-</table>
-
+<script>
+    $(document).scroll(function() {
+        console.log($(document).scrollTop());
+        if ($(document).scrollTop() > 200) {
+            $('#scroll-up').fadeIn();
+        }
+    });
+</script>

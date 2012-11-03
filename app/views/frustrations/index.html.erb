@@ -1,5 +1,17 @@
-<% @frustrations.each do |frustration| %>
-    <%= render frustration %>
-<% end %>
+<div class="frustrations-list">
+    <% @frustrations.each do |frustration| %>
+        <%= render frustration %>
+    <% end %>
+</div>
 
-
+<script>
+    $(document).scroll(function() {
+        console.log($(document).scrollTop());
+        if ($(document).scrollTop() > 200) {
+            $('#scroll-up').fadeIn();
+        }
+        else {
+            $('#scroll-up').fadeOut();
+        }
+    });
+</script>

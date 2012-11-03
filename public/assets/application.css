@@ -9932,8 +9932,9 @@ body {
 .frust-item {
     width: 400px;
     height: auto;
-    margin: 30px;
+    margin: 30px 50px;
     position: relative;
+    display: inline-block;
 }
 
 .frust-main-container {
@@ -10029,6 +10030,50 @@ body {
 
 .big-love img {
     margin-top: 30px;
+}
+
+.frustrations-list {
+    text-align: center;
+}
+
+#scroll-up {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: #AAA;
+    height: 0px;
+    width: 40px;
+    text-align: center;
+    border-radius: 4px;
+    opacity: 0.7;
+    color: white;
+    font-size: 0.8em;
+    padding: 20px 20px 40px 20px;
+    display: block;
+    z-index: 100;
+    display: none;
+}
+
+/* Responsive design */
+
+@media (min-width: 1200px) { 
+    .frust-item {
+        width: 41%;
+        margin: 30px 60px 30px 30px;
+    }
+}
+
+@media (min-width: 980px) and (max-width: 1199px) {
+    .frust-item {
+        width: 39%;
+    }
+}
+
+@media (max-width: 979px) { 
+    .frust-item {
+        width: 90%;
+        margin: 30px 0 30px -30px;
+    }
 }
 /* Inspired by http://css-tricks.com/snippets/css/corner-ribbon/ */
 

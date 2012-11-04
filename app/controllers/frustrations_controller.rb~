@@ -44,6 +44,8 @@ class FrustrationsController < ApplicationController
   def create
     unless current_user.nil?
         @frustration = current_user.frustrations.build(params[:frustration])
+        current_user.level += 1
+        current_user.save
     else
         @frustration = Frustration.new(params[:frustration])
     end
@@ -76,6 +78,18 @@ class FrustrationsController < ApplicationController
     respond_to do |format|
         format.html { render :nothing => true }
         format.json { render json: current_user.level }
+    end
+  end
+  
+  def add_comment
+    logger.debug(params[:content])
+    logger.debug(params[:id])
+    
+    @frustration = Frustration.find(params[:id])
+    
+    respond_to do |format|
+        format.json { render json: @frustration }
+        format.html
     end
   end
 
@@ -137,4 +151,5 @@ class FrustrationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 end

@@ -55,7 +55,7 @@
                             <div class="bar bar-success" id="green-progress-bar-part" style="width: 33%;"></div>
                             <div class="bar bar-warning" id="yellow-progress-bar-part" style="width: <%= current_user.level - 33 %>%;"></div>
                             <div class="bar bar-danger" id="red-progress-bar-part" style="width: 0%;"></div>
-                      <% else %>
+                      <% elsif current_user.level >=64 %>
                         <div class="bar bar-success" id="green-progress-bar-part" style="width: 33%;"></div>
                             <div class="bar bar-warning" id="yellow-progress-bar-part" style="width: 33%;"></div>
                             <div class="bar bar-danger" id="red-progress-bar-part" style="width: <%= current_user.level - 67 %>%;"></div>

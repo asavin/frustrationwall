@@ -80,6 +80,19 @@ class FrustrationsController < ApplicationController
         format.json { render json: current_user.level }
     end
   end
+  
+  def add_comment
+    logger.debug(params[:content])
+    logger.debug(params[:id])
+    
+    @frustration = Frustration.find(params[:id])
+    @frustration.comments.create(:content => params[:content])
+    
+    respond_to do |format|
+        format.json { render json: @frustration }
+        format.html
+    end
+  end
 
   def epic_destruction
     unless current_user.nil?
@@ -139,4 +152,5 @@ class FrustrationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 end

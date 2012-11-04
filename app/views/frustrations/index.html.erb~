@@ -16,7 +16,6 @@
 
     <script>
         $(document).scroll(function() {
-            console.log($(document).scrollTop());
             if ($(document).scrollTop() > 200) {
                 $('#scroll-up').fadeIn();
             }
@@ -29,4 +28,5 @@
     <div class="no-frustrations">
         No frustrations today so far. Peace. Carry on.
     </div>
+    <hr />
 <% end %>

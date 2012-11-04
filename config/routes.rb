@@ -5,6 +5,7 @@ Frustrationwall::Application.routes.draw do
   match "/frustrations/add_love/:id" => "frustrations#add_love", :as => :add_love
   match "/my" => "users#frustrations", :as => :user_frustrations
   match "/destroy_all" => "frustrations#epic_destruction", :as => :destroy_all
+  match "/frustrations/:id/add_comment" => "frustrations#add_comment", :as => :add_comment
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

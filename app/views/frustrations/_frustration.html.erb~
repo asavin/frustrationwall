@@ -1,4 +1,4 @@
-<div class="frust-item">
+<div class="frust-item" id="frust-main-container-<%= frustration.id %>">
     <div class="frust-main-container">
         <div class="frust-love-bubble" id="frust-love-bubble-<%= frustration.id %>">
             <%= image_tag('little_heart.png', :class => 'love-bubble-icon') %>
@@ -6,14 +6,15 @@
         </div>
         <div class="frust-content">
             <span><%= frustration.content %></span>
-            <div class="time-ago"><%= link_to time_ago_in_words(frustration.created_at) + ' ago', frustration %></div>
+            <div class="time-ago" id="time-ago-<%= frustration.id %>"><%= link_to time_ago_in_words(frustration.created_at) + ' ago', frustration %></div>
+            
         </div>
         <div class="big-love" id="big-love-<%= frustration.id %>">
             <%= image_tag('heart_grey.png') %>
         </div>
         <div class="frust-actions">
             <a href="#" id="frust-love-action-<%= frustration.id %>"><span class="frust-love-action"></span></a>
-            <a href="#"><span class="frust-comment-action"></span></a>
+            <a href="#" id="frust-comment-action-<%= frustration.id %>"><span class="frust-comment-action"></span></a>
         </div>
     </div>
     <script>
@@ -36,6 +37,10 @@
                         percents = data - 66 + '%';
                         $('#red-progress-bar-part').css('width', percents);
                     }
+                    
+                    if(data >= 100) {
+                        $('#big-red-button').show();
+                    }
                 }
             
             );
@@ -45,5 +50,36 @@
                 $('#frust-love-bubble-<%= frustration.id %>').fadeIn('slow');
             });
         <% end %>
+        
+        $('#frust-comment-action-<%= frustration.id %>').click(function(e){
+            e.preventDefault();
+            if ($('#comment-form-<%= frustration.id %>').length) {
+                $('#comment-form-<%= frustration.id %>').remove();
+                $('#time-ago-<%= frustration.id %>').show();
+            } else {
+            $('#time-ago-<%= frustration.id %>').hide();
+            $('#frust-main-container-<%= frustration.id %>').append('<div class="comment-form" id="comment-form-<%= frustration.id %>"><div class="input-append"><input class="span3" id="comment-input-<%= frustration.id %>" type="text"><button class="btn" type="button" id="send-comment-<%= frustration.id %>">Comment</button></div></div>');
+           } 
+        });
+        
+        $('#send-comment-<%= frustration.id %>').live('click', function(e){
+            e.preventDefault();
+            
+            $.ajax('<%= add_comment_path(frustration) %>', {
+                data: { content: $('#comment-input-<%= frustration.id %>').text() },
+                cache: false,
+                dataType: 'json',
+                beforeSend: function() {
+                    $('#send-comment-<%= frustration.id %>').text("Sending...");
+                },
+                complete: function(){
+                    $('#comment-form-<%= frustration.id %>').remove();
+                    $('#time-ago-<%= frustration.id %>').show();
+                }
+            });
+            
+            
+        });
+        
     </script>
 </div>

@@ -139,9 +139,11 @@
             if ($("#new_frustration_form").is(':visible') == true) {
                 $('.cloud-left').fadeIn('fast');
                 $('.cloud-right').fadeIn('fast');
+                $('#scroll-up').show();
             } else {
                 $('.cloud-left').fadeOut('fast');
                 $('.cloud-right').fadeOut('fast');
+                $('#scroll-up').hide();
             }
             var txt = $("#new_frustration_form").is(':visible') ? 'Add one' : 'Maybe not';
             $("#toggle-frustration-form").text(txt);

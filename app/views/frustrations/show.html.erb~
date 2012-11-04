@@ -1,6 +1,14 @@
 <div class="frustration-details">
     <h1>Frustration details</h1>
     <p class="frustration-description"><%= @frustration.content %></p>
-    <p>Added <%= time_ago_in_words(@frustration.created_at) + ' ago' %></p>
+    <p class="time-ago">Added <%= time_ago_in_words(@frustration.created_at) + ' ago' %></p>
+    <% unless @frustration.comments.empty? %>
+        <h1>Comments</h1>
+        <% @frustration.comments.each do |comment| %>
+            <div class="comment">
+                <%= comment.content %>
+            </div>
+        <% end %>
+    <% end %>
 </div>
 <%= link_to 'Back', frustrations_path, :class=>'btn btn-warning' %>

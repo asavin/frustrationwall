@@ -15,7 +15,8 @@
    -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
    box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
    text-shadow: #7ea4bd 0 1px 0;
-   color: #06426c;
+   /*color: #06426c;*/
+   color: #DEE9F2;
    font-size: 14px;
    font-family: helvetica, serif;
    text-decoration: none;

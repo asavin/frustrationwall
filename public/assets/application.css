@@ -9358,7 +9358,8 @@ body {
    -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
    box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
    text-shadow: #7ea4bd 0 1px 0;
-   color: #06426c;
+   /*color: #06426c;*/
+   color: #DEE9F2;
    font-size: 14px;
    font-family: helvetica, serif;
    text-decoration: none;
@@ -9566,7 +9567,7 @@ body {
 }
 
 .love-bubble-count {
-    position: absolute;
+    position: relative;
     top: 30px;
     color: white;
     font-size: 0.8em;
@@ -9740,6 +9741,17 @@ body {
     border-radius: 3px;
 }
 
+.frustration-details .comment {
+    background: white;
+    padding: 20px;
+    width: 100%;
+    border-radius: 3px;
+}
+
+.frustration-details .comment:nth-last-child(2) {
+    margin-top: 20px;
+}
+
 .frustration-details h1 {
     font-family: 'CabinSketchRegular';
 }
@@ -9860,6 +9872,12 @@ body {
     color: #999;
 }
 
+.comment-form {
+    margin-bottom: 30px;
+    padding: 5px 0;
+    background: white;
+}
+
 /* Responsive design */
 
 @media (min-width: 1200px) { 
@@ -9872,6 +9890,10 @@ body {
 @media (min-width: 980px) and (max-width: 1199px) {
     .frust-item {
         width: 39%;
+    }
+    
+    .frust-comment-action {
+        width: 49%;
     }
 }
 
@@ -9897,6 +9919,10 @@ body {
         background-size: 50%;
         background-position: 100%;
     }
+    
+    .frust-comment-action {
+        width: 49%;
+    }
 }
 
 @media (max-width: 767px) {
@@ -9905,6 +9931,18 @@ body {
     }
     
     .cloud-right {
+        display: none;
+    }
+    
+    .frust-comment-action {
+        width: 49%;
+    }
+    
+    #frustration_content {
+        width: 200px;
+    }
+    
+    #scroll-up {
         display: none;
     }
 }

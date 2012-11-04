@@ -44,6 +44,8 @@ class FrustrationsController < ApplicationController
   def create
     unless current_user.nil?
         @frustration = current_user.frustrations.build(params[:frustration])
+        current_user.level += 1
+        current_user.save
     else
         @frustration = Frustration.new(params[:frustration])
     end
@@ -77,6 +79,37 @@ class FrustrationsController < ApplicationController
         format.html { render :nothing => true }
         format.json { render json: current_user.level }
     end
+  end
+
+  def epic_destruction
+    unless current_user.nil?
+        if current_user.level >= 100
+            # We should first remove frustrations from the registered users
+            # and dispatch some mails
+            User.all.each do |user|
+                user.frustrations.destroy_all
+                Notifier.notify_frustration_gone(user).deliver
+            end
+
+            # After that we remove the rest of frustrations
+            Frustration.destroy_all
+            
+            current_user.level = 0
+            current_user.save
+            
+            respond_to do |format|
+                format.html { redirect_to root_path, notice: "The world is beautiful again" }
+                format.json { render json: Frustration.count }
+            end
+        else
+            respond_to do |format|
+                format.html { redirect_to root_path, notice: "You don't have anough love to perform this action" }
+                format.json { render json: Frustration.count }
+            end
+        
+        end
+    end
+    
   end
 
   # PUT /frustrations/1

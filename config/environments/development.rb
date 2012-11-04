@@ -36,5 +36,15 @@ Frustrationwall::Application.configure do
   config.assets.debug = true
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  
+  ActionMailer::Base.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => 'smtp.gmail.com',
+    :port => 587,
+    :domain => "111items.com",
+    :user_name => 'admin@111items.com',
+    :password => 'BoogieMail',
+    :authentication => 'plain'
+  }
 
 end

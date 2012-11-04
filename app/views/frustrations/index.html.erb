@@ -1,26 +1,33 @@
-<div class="frustrations-list">
-        <%= render @frustrations %>
-    
-    <%= will_paginate @frustrations %>
-    
-    <div class="bubblingG">
-        <span id="bubblingG_1">
-        </span>
-        <span id="bubblingG_2">
-        </span>
-        <span id="bubblingG_3">
-        </span>
+<% if Frustration.count > 0 %>
+    <div class="frustrations-list">
+            <%= render @frustrations %>
+        
+        <%= will_paginate @frustrations %>
+        
+        <div class="bubblingG">
+            <span id="bubblingG_1">
+            </span>
+            <span id="bubblingG_2">
+            </span>
+            <span id="bubblingG_3">
+            </span>
+        </div>
     </div>
-</div>
 
-<script>
-    $(document).scroll(function() {
-        console.log($(document).scrollTop());
-        if ($(document).scrollTop() > 200) {
-            $('#scroll-up').fadeIn();
-        }
-        else {
-            $('#scroll-up').fadeOut();
-        }
-    });
-</script>
+    <script>
+        $(document).scroll(function() {
+            console.log($(document).scrollTop());
+            if ($(document).scrollTop() > 200) {
+                $('#scroll-up').fadeIn();
+            }
+            else {
+                $('#scroll-up').fadeOut();
+            }
+        });
+    </script>
+<% else %>
+    <div class="no-frustrations">
+        No frustrations today so far. Peace. Carry on.
+    </div>
+    <hr />
+<% end %>

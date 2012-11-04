@@ -27,14 +27,19 @@
         <% end %>
     <% end %>
     </div>
-    <div id="overlay-destruction-section">
-        <div class="destruction-content">
-            <h1>Warning</h1>
-            <p>This will effectively remove all frustrations from everyone on this server</p>
-            <button class="btn btn-danger">Yes please</button>
-            <button class="btn btn-success">No, wait</button>
+    <% if user_signed_in? %>
+        <div id="overlay-destruction-section">
+            <div class="destruction-content">
+                <h1>Warning</h1>
+                <p>This will effectively remove all frustrations from everyone on this server</p>
+                <button class="btn btn-danger" id="destruction-yes-button">Yes please</button>
+                <button class="btn btn-success" id="destruction-no-button">No, wait</button>
+            </div>
+            <div class="destroy_in_progress">
+                
+            </div>
         </div>
-    </div>
+    <% end %>
     <div id="wrap">
         <header>
             <div class="navbar">
@@ -50,10 +55,10 @@
                             <div class="bar bar-success" id="green-progress-bar-part" style="width: 33%;"></div>
                             <div class="bar bar-warning" id="yellow-progress-bar-part" style="width: <%= current_user.level - 33 %>%;"></div>
                             <div class="bar bar-danger" id="red-progress-bar-part" style="width: 0%;"></div>
-                      <% else %>
+                      <% elsif current_user.level >=64 %>
                         <div class="bar bar-success" id="green-progress-bar-part" style="width: 33%;"></div>
                             <div class="bar bar-warning" id="yellow-progress-bar-part" style="width: 33%;"></div>
-                            <div class="bar bar-danger" id="red-progress-bar-part" style="width: <%= current_user.level - 66 %>%;"></div>
+                            <div class="bar bar-danger" id="red-progress-bar-part" style="width: <%= current_user.level - 67 %>%;"></div>
                       <% end %> 
                       
                     </div>
@@ -151,6 +156,27 @@
             $('#big-red-button').click(function(){
                 $('#wrap').addClass('shaky');
                 $('#overlay-destruction-section').fadeIn('fast');
+            });
+            
+            $('#destruction-no-button').click(function(){
+                $('#overlay-destruction-section').fadeOut('fast');
+                $('#wrap').removeClass('shaky');
+            });
+            
+            $('#destruction-yes-button').click(function(){
+                
+                $.ajax('<%= destroy_all_path %>', {
+                    cache: false,
+                    beforeSend: function(){
+                        $('.destroy_in_progress').show();
+                        $('#destruction-no-button').hide();
+                        $('#destruction-yes-button').text('Destroying...');
+                        
+                    },
+                    success: function(data){
+                        location.reload(true);
+                    }
+                });
             });
         <% end %>
         

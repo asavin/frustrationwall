@@ -9704,13 +9704,51 @@ body {
 }
 
 .destruction-content {
-    padding: 50px;
+    padding: 50px 40px;
     color: white;
-    font-family: 'CabinSketchRegular';
     overflow: hidden;
 }
 
+.destroy_in_progress {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 100;
+    background: #444;
+    display: none;
+}
+
+.destruction-content h1 {
+    font-family: 'CabinSketchRegular';
+}
+
+.frustration-details {
+    margin-bottom: 20px;
+}
+
+.frustration-details .time-ago {
+    font-size: 0.8em;
+    color: #999;
+    float: right;
+}
+
+.frustration-description {
+    background: white;
+    padding: 20px;
+    width: 100%;
+    border-radius: 3px;
+}
+
+.frustration-details h1 {
+    font-family: 'CabinSketchRegular';
+}
+
 /* Cloudy with a chance of sleep */
+.sky-0 {
+    background-color: #66CCFF;
+}
+
 .sky-1 {
     background-color: #66CCFF;
 }
@@ -9771,6 +9809,10 @@ body {
     z-index: -1;
 }
 
+.cloud-0 {
+    background-image: url('/assets/cloud_0.png');
+}
+
 .cloud-1 {
     background-image: url('/assets/cloud_1.png');
 }
@@ -9809,6 +9851,13 @@ body {
 
 .cloud-10 {
     background-image: url('/assets/cloud_10.png');
+}
+
+.no-frustrations {
+    text-align: center;
+    font-family: 'LondrinaSolidRegular';
+    font-size: 2em;
+    color: #999;
 }
 
 /* Responsive design */

@@ -2,7 +2,7 @@
     <% if user_signed_in? %>
     <h1>Love received</h1>
     <!--<div class="heart-shape"></div>-->
-    <p class="hearts"><% for i in 0..current_user.love %>♥<% end %></p>
+    <p class="hearts"><% for i in 0..current_user.love %>♥<%= ' ' %><% end %></p>
     <hr/>
     <h1>Your frustrations</h1>
     <%= render @frustrations %>

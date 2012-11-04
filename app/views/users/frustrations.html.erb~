@@ -3,8 +3,6 @@
     <h1>Love received</h1>
     <!--<div class="heart-shape"></div>-->
     <p class="hearts"><% for i in 0..current_user.love %>♥<% end %></p>
-    <div class="heart"></div>
-    <p><%= current_user.love %></p>
     <hr/>
     <h1>Your frustrations</h1>
     <%= render @frustrations %>

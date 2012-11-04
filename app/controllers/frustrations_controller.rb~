@@ -75,6 +75,11 @@ class FrustrationsController < ApplicationController
         end
     end
     
+    unless @frustration.user.nil?
+        @frustration.user.love += 1
+        user.save
+    end
+    
     respond_to do |format|
         format.html { render :nothing => true }
         format.json { render json: current_user.level }
@@ -86,6 +91,7 @@ class FrustrationsController < ApplicationController
     logger.debug(params[:id])
     
     @frustration = Frustration.find(params[:id])
+    @frustration.comments.create(:content => params[:content])
     
     respond_to do |format|
         format.json { render json: @frustration }

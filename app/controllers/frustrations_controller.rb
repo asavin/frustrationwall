@@ -75,6 +75,11 @@ class FrustrationsController < ApplicationController
         end
     end
     
+    unless @frustration.user.nil?
+        @frustration.user.love += 1
+        @frustration.user.save
+    end
+    
     respond_to do |format|
         format.html { render :nothing => true }
         format.json { render json: current_user.level }

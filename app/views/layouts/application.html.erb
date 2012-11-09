@@ -6,6 +6,7 @@
   <title>Frustration Wall</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
+  <meta name="google-site-verification" content="172twSSFAy2eKsjotUO-3No-1u255209xBykS0GEgV8" />
 
   
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -65,6 +66,8 @@
                     <button class="btn btn-danger" id="big-red-button">Big Red Button</button>
                 <% end %>
                 <ul class="nav pull-right">
+                    <!-- Button to trigger modal -->
+                    <li><a href="#myModal" data-toggle="modal">About</a></li>
                     <% if user_signed_in? %>
                         <li class="dropdown">
                             <a class="dropdown-toggle"
@@ -93,6 +96,41 @@
                 Go Up
             </div>
         </a>
+        
+        
+         
+        <!-- Modal -->
+        <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Frustration Wall</h3>
+          </div>
+          <div class="modal-body">
+            <p>This is an experimental web service created during a weekend-long hacking weekend arranged by Boogie Software in the forests of northern Finland. Alexander Savin is the main dude behind this whole thing. You can ping me on Twitter.</p>
+            <p>
+            <a href="https://twitter.com/intent/tweet?screen_name=karismafilms" class="twitter-mention-button" data-related="karismafilms">Tweet to @karismafilms</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </p>
+            <p>
+            The idea is pretty simple
+            <ul>
+                <li>You post any frustration that made you feel gloomy today</li>
+                <li>You can give and receive love</li>
+                <li>You can level up to the point when the Big Red Button become available</li>
+                <li>You can use Big Red Button to relieve everyone from their frustrations. That's right.</li>
+                <li>You can keep the love you received. But do not become attached to your frustrations. They are temporary, always.</li>
+                <li>You can comment and be commented</li>
+            </ul>
+            </p>
+            <p>
+            Comments about the service are welcome via Twitter.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+          </div>
+        </div>
+        
         <div class="container">
             <% if Frustration.count < 100 %>
             <div class="jumbotron ribbon-wrapper sky-<%= Frustration.count/10 %>">

@@ -67,6 +67,14 @@
             });
         <% end %>
         
+        $('#comment-input-<%= frustration.id %>').keypress(function(e) {
+            if(e.which == 13) {
+                if($('#comment-input-<%= frustration.id %>').val() != '') {
+                    $('#send-comment-<%= frustration.id %>').trigger('click');
+                }
+            }
+        });
+        
         $('#frust-comment-action-<%= frustration.id %>').click(function(e){
             e.preventDefault();
             if ($('#comment-form-<%= frustration.id %>').length) {
@@ -91,8 +99,13 @@
                 complete: function(json){
                     $('#comment-form-<%= frustration.id %>').remove();
                     $('#time-ago-<%= frustration.id %>').show();
+                    
+                },
+                
+                success: function(json){
+                    $('#frust-comment-bubble-<%= frustration.id %>').show();
                     var a = $('#comment-bubble-count-<%= frustration.id %>').text() + 1;
-                    $('#comment-bubble-count-<%= frustration.id %>').text(a);
+                    $('#comment-bubble-count-<%= frustration.id %>').text(json);
                 }
             });
             

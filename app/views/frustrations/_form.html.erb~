@@ -2,11 +2,15 @@
   <%= f.text_area :content, :maxlength => 400, :rows => 7, :placeholder => 'What happened today?' %>
   
   <div class="actions">
-    <%= f.button :submit, :disable_with => 'Saving...', :class => 'btn btn-danger' %>
+    <%= f.button :submit, 'Share Frustration', :disable_with => 'Saving...', :class => 'btn btn-danger' %>
   </div>
 <% end %>
 
 <script>
+$(function(){
+    $("#frustration_content").text('');
+});
+
 $( function() {
     var characterlimit = 400;
     $("#frustration_content").after( "<span class=\"characters_left\"></span>" ).next().hide().end()

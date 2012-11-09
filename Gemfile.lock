@@ -212,6 +212,6 @@ DEPENDENCIES
   simple_form
   therubyracer
   thin
-  twitter-bootstrap-rails
+  twitter-bootstrap-rails (>= 2.1.6)
   uglifier (>= 1.0.3)
   will_paginate

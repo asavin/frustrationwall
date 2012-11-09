@@ -7,6 +7,11 @@
 <% end %>
 
 <script>
+$(function(){
+    $("#frustration_content").text('');
+    $('#frustration-content').focus();
+});
+
 $( function() {
     var characterlimit = 400;
     $("#frustration_content").after( "<span class=\"characters_left\"></span>" ).next().hide().end()

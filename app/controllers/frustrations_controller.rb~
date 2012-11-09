@@ -98,7 +98,7 @@ class FrustrationsController < ApplicationController
     @frustration.comments.create(:content => params[:content])
     
     respond_to do |format|
-        format.json { render json: @frustration }
+        format.json { render json: @frustration.comments.length }
         format.html
     end
   end
@@ -137,11 +137,20 @@ class FrustrationsController < ApplicationController
   # PUT /frustrations/1
   # PUT /frustrations/1.json
   def update
-    @frustration = Frustration.find(params[:id])
+    # instead of updating existing one, let's create a new frustration
+    # this way we disable editing of existing frustrations for users
+    
+    unless current_user.nil?
+        @frustration = current_user.frustrations.build(params[:frustration])
+        current_user.level += 1
+        current_user.save
+    else
+        @frustration = Frustration.new(params[:frustration])
+    end
 
     respond_to do |format|
-      if @frustration.update_attributes(params[:frustration])
-        format.html { redirect_to @frustration, notice: 'Frustration was successfully updated.' }
+      if @frustration.save
+        format.html { redirect_to root_path, notice: 'Frustration added' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

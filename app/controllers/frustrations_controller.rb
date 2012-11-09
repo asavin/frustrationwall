@@ -82,7 +82,11 @@ class FrustrationsController < ApplicationController
     
     respond_to do |format|
         format.html { render :nothing => true }
-        format.json { render json: current_user.level }
+        if !current_user.nil?
+            format.json { render json: current_user.level }
+        else
+            format.json { render :nothing => true }
+        end
     end
   end
   
@@ -94,7 +98,7 @@ class FrustrationsController < ApplicationController
     @frustration.comments.create(:content => params[:content])
     
     respond_to do |format|
-        format.json { render json: @frustration }
+        format.json { render json: @frustration.comments.length }
         format.html
     end
   end

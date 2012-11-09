@@ -106,15 +106,44 @@
 .frust-love-bubble {
     background: #9E9E9E;
     border: 1px solid #AAA;
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 40px;
     border-radius: 3px;
     position: absolute;
     top: 15px;
-    right: -51px;
+    right: -41px;
     -webkit-border-radius: 0px 3px 3px 0px;
     border-radius: 0px 3px 3px 0px;
     text-align: center;
+    display: none;
+    background-image: url('<%= asset_path('bigger-heart.png') %>');
+    background-repeat: no-repeat;
+    background-position: 10%;
+    background-size: 20%;
+    transition: background-size 1s;
+    -moz-transition: background-size 1s; /* Firefox 4 */
+    -webkit-transition: background-size 1s; /* Safari and Chrome */
+    -o-transition: background-size 1s; /* Opera */
+    
+}
+
+.frust-comment-bubble {
+    background: #9E9E9E;
+    border: 1px solid #AAA;
+    height: 30px;
+    width: 40px;
+    border-radius: 3px;
+    position: absolute;
+    top: 50px;
+    right: -41px;
+    -webkit-border-radius: 0px 3px 3px 0px;
+    border-radius: 0px 3px 3px 0px;
+    text-align: center;
+    display: block;
+    background-image: url('<%= asset_path('comment-bubble.png') %>');
+    background-repeat: no-repeat;
+    background-position: 10%;
+    background-size: 40%;
     display: none;
 }
 
@@ -165,16 +194,17 @@
 }
 
 .love-bubble-icon {
-    position: absolute;
-    left: 14px;
-    top: 5px;
+    width: 25%;
+    margin-top: 4px;
+    display: inline-block;
 }
 
 .love-bubble-count {
-    position: relative;
-    top: 30px;
     color: white;
     font-size: 0.8em;
+    top: 3px;
+    margin-left: 4px;
+    font-weight: bold;
 }
 
 .big-love {

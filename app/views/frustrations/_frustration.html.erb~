@@ -1,9 +1,13 @@
 <div class="frust-item" id="frust-main-container-<%= frustration.id %>">
     <div class="frust-main-container">
         <div class="frust-love-bubble" id="frust-love-bubble-<%= frustration.id %>">
-            <%= image_tag('little_heart.png', :class => 'love-bubble-icon') %>
             <span class="love-bubble-count" id="love-bubble-count-<%= frustration.id %>"><%= frustration.love %></span>
         </div>
+        <a href="<%= frustration_path(frustration) %>">
+        <div class="frust-comment-bubble" id="frust-comment-bubble-<%= frustration.id %>">
+            <span class="love-bubble-count" id="comment-bubble-count-<%= frustration.id %>"><%= frustration.comments.length %></span>
+        </div>
+        </a>
         <div class="frust-content">
             <span><%= frustration.content %></span>
             <div class="time-ago" id="time-ago-<%= frustration.id %>"><%= link_to time_ago_in_words(frustration.created_at) + ' ago', frustration %></div>
@@ -21,8 +25,13 @@
         $('#frust-love-action-<%= frustration.id %>').click(function(e){
             e.preventDefault();
             $('#frust-love-bubble-<%= frustration.id %>').show();
-            count = parseInt($('#love-bubble-count-<%= frustration.id %>').text(), 10) + 1
-            $('#love-bubble-count-<%= frustration.id %>').text(count)
+            count = parseInt($('#love-bubble-count-<%= frustration.id %>').text(), 10) + 1;
+            $('#love-bubble-count-<%= frustration.id %>').text(count);
+            
+            var n = $('#frust-love-bubble-<%= frustration.id %>');
+            n.css('background-size', (parseFloat(n.css('background-size')) + 2) + '%');
+            
+            
             $('#big-love-<%= frustration.id %>').fadeIn().delay(300).fadeOut();
             $.getJSON("<%= add_love_path(:id => frustration.id) %>", {}, 
                 function(data) {
@@ -48,6 +57,13 @@
         <% if frustration.love > 0 %>
             $(document).ready(function(){
                 $('#frust-love-bubble-<%= frustration.id %>').fadeIn('slow');
+                $('#frust-love-bubble-<%= frustration.id %>').css('background-size', '<%= love_icon_size(frustration.love) %>%');
+            });
+        <% end %>
+        
+        <% if frustration.comments.length > 0 %>
+            $(document).ready(function(){
+                $('#frust-comment-bubble-<%= frustration.id %>').fadeIn('slow');
             });
         <% end %>
         
@@ -66,15 +82,17 @@
             e.preventDefault();
             
             $.ajax('<%= add_comment_path(frustration) %>', {
-                data: { content: $('#comment-input-<%= frustration.id %>').text() },
+                data: { content: $('#comment-input-<%= frustration.id %>').val() },
                 cache: false,
                 dataType: 'json',
                 beforeSend: function() {
                     $('#send-comment-<%= frustration.id %>').text("Sending...");
                 },
-                complete: function(){
+                complete: function(json){
                     $('#comment-form-<%= frustration.id %>').remove();
                     $('#time-ago-<%= frustration.id %>').show();
+                    var a = $('#comment-bubble-count-<%= frustration.id %>').text() + 1;
+                    $('#comment-bubble-count-<%= frustration.id %>').text(a);
                 }
             });
             

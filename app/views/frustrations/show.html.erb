@@ -5,10 +5,12 @@
     <% unless @frustration.comments.empty? %>
         <h1>Comments</h1>
         <% @frustration.comments.each do |comment| %>
-            <div class="comment">
-                <%= comment.content %>
+            <div class="comment-container">
+                <div class="comment">
+                    <%= comment.content %>
+                </div>
+                <p class="time-ago">Added <%= time_ago_in_words(comment.created_at) + ' ago' %></p>
             </div>
-            <p class="time-ago">Added <%= time_ago_in_words(comment.created_at) + ' ago' %></p>
         <% end %>
     <% end %>
 </div>

@@ -12,6 +12,7 @@
     Heart icon by Rachel Fu - http://www.kde-look.org/usermanager/search.php?username=c9d
     Text icon by Dat Nguyen - http://splashyfish.com/
     Shaky animation: Joss, http://www.cssreset.com/css3-webkit-animation-shake-links/
+    Heart icon by Everaldo Coelho - http://www.everaldo.com/
     
 # TECHNOLOGY COLOPHON
 

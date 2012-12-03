@@ -8,6 +8,12 @@
             <span class="love-bubble-count" id="comment-bubble-count-<%= frustration.id %>"><%= frustration.comments.length %></span>
         </div>
         </a>
+        <% if user_signed_in? && current_user.admin? %>
+        <a href="<%= frustration_path(frustration) %>" data-method="delete" data-remote="true">
+            <div class="frust-remove-bubble">
+            </div>
+        </a>
+        <% end %>
         <div class="frust-content">
             <span><%= frustration.content %></span>
             <div class="time-ago" id="time-ago-<%= frustration.id %>"><%= link_to time_ago_in_words(frustration.created_at) + ' ago', frustration %></div>

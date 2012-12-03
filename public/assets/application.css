@@ -9551,6 +9551,22 @@ body {
     display: none;
 }
 
+.frust-remove-bubble {
+    background: #9E9E9E;
+    border: 1px solid #AAA;
+    height: 30px;
+    width: 40px;
+    border-radius: 3px;
+    position: absolute;
+    top: 85px;
+    right: -41px;
+    -webkit-border-radius: 0px 3px 3px 0px;
+    border-radius: 0px 3px 3px 0px;
+    text-align: center;
+    display: block;
+    background-color: #AF0000;
+}
+
 .frust-content {
     text-align: left;
     padding-bottom: 35px;
@@ -9923,6 +9939,10 @@ body {
 
 .new-comment {
     margin: 20px 0;
+}
+
+.btn-logout {
+    margin-left: 15px;
 }
 
 /* Responsive design */

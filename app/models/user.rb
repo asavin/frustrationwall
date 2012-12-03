@@ -9,4 +9,13 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   has_many :frustrations
+  
+  def admin?
+    # TODO: this is hardcoded for now
+    if self.email == 'karismafilms@gmail.com'
+        true
+    else
+        false
+    end
+  end
 end

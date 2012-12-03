@@ -9,4 +9,5 @@ class UsersController < ApplicationController
             format.json { render json: @frustrations }
         end
     end
+    
 end

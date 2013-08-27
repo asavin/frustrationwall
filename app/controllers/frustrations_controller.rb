@@ -56,7 +56,7 @@ class FrustrationsController < ApplicationController
         format.html { redirect_to root_path, notice: 'Frustration was successfully shared' }
         format.json { render json: @frustration, status: :created, location: @frustration }
       else
-        format.html { redirect_to root_path, notice: 'Something went wrong' }
+        format.html { redirect_to root_path, notice: 'Bugger, could not save the frustration :(' }
         format.json { render json: @frustration.errors, status: :unprocessable_entity }
       end
     end

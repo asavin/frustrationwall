@@ -31,6 +31,8 @@ GEM
     addressable (2.3.5)
     arel (3.0.2)
     bcrypt-ruby (3.1.2)
+    bot-away (2.0.1)
+      actionpack (>= 2.3.5)
     builder (3.0.4)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -180,6 +182,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bot-away (~> 2.0)
   coffee-rails (~> 3.2.1)
   devise
   exception_notification

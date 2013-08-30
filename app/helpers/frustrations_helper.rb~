@@ -1,6 +1,0 @@
-module FrustrationsHelper
-    def love-icon-size(love)
-        return 20+(love*2)
-    end
-
-end
